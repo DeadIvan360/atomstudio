@@ -50,24 +50,24 @@ const Services = () => {
   return (
     <section id="services" className="py-32 relative overflow-hidden" ref={containerRef}>
       {/* Parallax Images - Right Side */}
-      <div className="absolute right-0 top-0 h-full w-1/3 pointer-events-none hidden lg:block">
+      <div className="absolute inset-0 pointer-events-none hidden lg:flex items-center justify-center">
         <motion.img
           src={parallaxFrame}
           alt=""
           style={{ y: y1 }}
-          className="absolute right-10 top-20 w-48 h-auto opacity-60"
+          className="absolute left-1/2 -translate-x-1/2 top-10 w-72 h-auto opacity-90"
         />
         <motion.img
           src={parallaxFrame}
           alt=""
           style={{ y: y2 }}
-          className="absolute right-32 top-1/3 w-64 h-auto opacity-40"
+          className="absolute left-1/2 -translate-x-1/4 top-1/3 w-80 h-auto opacity-80"
         />
         <motion.img
           src={parallaxFrame}
           alt=""
           style={{ y: y3 }}
-          className="absolute right-8 bottom-40 w-56 h-auto opacity-70"
+          className="absolute left-1/2 -translate-x-3/4 bottom-20 w-64 h-auto opacity-85"
         />
       </div>
 
