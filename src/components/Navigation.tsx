@@ -5,6 +5,16 @@ import { Menu, X, ChevronDown, ShoppingBag, Building2, Briefcase, Rocket, Palett
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleVideoStarted = () => {
+      setIsVisible(true);
+    };
+
+    window.addEventListener('videoStarted', handleVideoStarted);
+    return () => window.removeEventListener('videoStarted', handleVideoStarted);
+  }, []);
 
   const services = [
     { name: "E-Commerce", icon: ShoppingBag, href: "#services" },
@@ -15,12 +25,14 @@ const Navigation = () => {
     { name: "Landing Pages", icon: Globe, href: "#services" },
   ];
 
+  if (!isVisible) return null;
+
   return (
     <>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between"
       >
         {/* Left Navigation Group */}
