@@ -55,19 +55,19 @@ const Services = () => {
           src={parallaxFrame}
           alt=""
           style={{ y: y1 }}
-          className="absolute right-10 top-20 w-48 h-auto opacity-20 blur-[1px]"
+          className="absolute right-10 top-20 w-48 h-auto opacity-60"
         />
         <motion.img
           src={parallaxFrame}
           alt=""
           style={{ y: y2 }}
-          className="absolute right-32 top-1/3 w-64 h-auto opacity-15 blur-[2px]"
+          className="absolute right-32 top-1/3 w-64 h-auto opacity-40"
         />
         <motion.img
           src={parallaxFrame}
           alt=""
           style={{ y: y3 }}
-          className="absolute right-8 bottom-40 w-56 h-auto opacity-25"
+          className="absolute right-8 bottom-40 w-56 h-auto opacity-70"
         />
       </div>
 
