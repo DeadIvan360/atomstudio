@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
+  const [videoEnded, setVideoEnded] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
@@ -11,8 +14,8 @@ const Hero = () => {
           src={heroVideo}
           autoPlay
           muted
-          loop
           playsInline
+          onEnded={() => setVideoEnded(true)}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
@@ -23,14 +26,12 @@ const Hero = () => {
         <motion.div 
           className="max-w-5xl"
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          animate={videoEnded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={videoEnded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <span className="inline-block px-4 py-2 rounded-full glass text-sm text-muted-foreground mb-8">
@@ -40,8 +41,7 @@ const Hero = () => {
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={videoEnded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8"
           >
@@ -54,8 +54,7 @@ const Hero = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={videoEnded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-xl text-muted-foreground max-w-xl mb-12"
           >
@@ -65,8 +64,7 @@ const Hero = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={videoEnded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4"
           >
@@ -89,8 +87,8 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        animate={videoEnded ? { opacity: 1 } : {}}
+        transition={{ delay: 0.6, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <motion.div
