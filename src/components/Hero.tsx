@@ -49,7 +49,7 @@ const Hero = () => {
       </section>
 
       {/* Text Section */}
-      <section ref={textSectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      <section ref={textSectionRef} className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
         {/* Parallax Images */}
         <div className="absolute inset-0 pointer-events-none hidden lg:block">
           <motion.img
