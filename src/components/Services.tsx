@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Palette, Code2, Rocket, LineChart, Layers, Zap } from "lucide-react";
+import { useRef } from "react";
+import parallaxFrame from "@/assets/parallax-frame.png";
 
 const services = [
   {
@@ -35,9 +37,41 @@ const services = [
 ];
 
 const Services = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [150, -50]);
+
   return (
-    <section id="services" className="py-32 relative">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-32 relative overflow-hidden" ref={containerRef}>
+      {/* Parallax Images - Right Side */}
+      <div className="absolute right-0 top-0 h-full w-1/3 pointer-events-none hidden lg:block">
+        <motion.img
+          src={parallaxFrame}
+          alt=""
+          style={{ y: y1 }}
+          className="absolute right-10 top-20 w-48 h-auto opacity-20 blur-[1px]"
+        />
+        <motion.img
+          src={parallaxFrame}
+          alt=""
+          style={{ y: y2 }}
+          className="absolute right-32 top-1/3 w-64 h-auto opacity-15 blur-[2px]"
+        />
+        <motion.img
+          src={parallaxFrame}
+          alt=""
+          style={{ y: y3 }}
+          className="absolute right-8 bottom-40 w-56 h-auto opacity-25"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
