@@ -1,19 +1,15 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useRef } from "react";
+
 import heroVideo from "@/assets/hero-video.mp4";
 import parallaxFrame from "@/assets/parallax-frame.png";
 
 const Hero = () => {
-  const textSectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: textSectionRef,
-    offset: ["start end", "end start"]
-  });
+  const { scrollYProgress } = useScroll();
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [150, -50]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [100, -250]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [250, 0]);
 
   return (
     <>
@@ -49,7 +45,7 @@ const Hero = () => {
       </section>
 
       {/* Text Section */}
-      <section ref={textSectionRef} className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
+      <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
         {/* Parallax Images */}
         <div className="absolute inset-0 pointer-events-none hidden lg:block">
           <motion.img
