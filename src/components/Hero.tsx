@@ -20,11 +20,18 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pt-20">
-        <div className="max-w-5xl">
+        <motion.div 
+          className="max-w-5xl"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8 }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
           >
             <span className="inline-block px-4 py-2 rounded-full glass text-sm text-muted-foreground mb-8">
               Estudio de Diseño Web
@@ -33,8 +40,9 @@ const Hero = () => {
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8"
           >
             <span className="text-foreground">CREAMOS</span>
@@ -46,8 +54,9 @@ const Hero = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             className="text-xl text-muted-foreground max-w-xl mb-12"
           >
             Transformamos ideas en sitios web impactantes. Diseño, desarrollo y 
@@ -56,8 +65,9 @@ const Hero = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <a
@@ -73,7 +83,7 @@ const Hero = () => {
               Ver Portafolio
             </a>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
