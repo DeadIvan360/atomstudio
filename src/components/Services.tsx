@@ -36,8 +36,8 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="services" className="py-32 relative">
+      <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -1,21 +1,8 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-
-import { useRef } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
-import parallaxFrame from "@/assets/parallax-frame.png";
 
 const Hero = () => {
-  const textSectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: textSectionRef,
-    offset: ["start end", "center center"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [200, 0]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [150, 0]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [250, 0]);
-
   return (
     <>
       {/* Video Section */}
@@ -50,28 +37,7 @@ const Hero = () => {
       </section>
 
       {/* Text Section */}
-      <section ref={textSectionRef} className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
-        {/* Parallax Images */}
-        <div className="absolute inset-0 pointer-events-none hidden lg:block">
-          <motion.img
-            src={parallaxFrame}
-            alt=""
-            style={{ y: y1 }}
-            className="absolute left-1/2 -translate-x-1/2 top-10 w-72 h-auto opacity-90"
-          />
-          <motion.img
-            src={parallaxFrame}
-            alt=""
-            style={{ y: y2 }}
-            className="absolute right-20 top-1/3 w-80 h-auto opacity-80"
-          />
-          <motion.img
-            src={parallaxFrame}
-            alt=""
-            style={{ y: y3 }}
-            className="absolute left-20 bottom-20 w-64 h-auto opacity-85"
-          />
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
         <div className="relative z-10 container mx-auto px-6 py-20">
           <motion.div 
             className="max-w-5xl"
