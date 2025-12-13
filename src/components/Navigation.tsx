@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingBag, Building2, Briefcase, Rocket, Palette, Globe } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +15,13 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Servicios", href: "#services" },
-    { name: "Portafolio", href: "#portfolio" },
-    { name: "Nosotros", href: "#about" },
-    { name: "Contacto", href: "#contact" },
+  const services = [
+    { name: "E-Commerce", icon: ShoppingBag, href: "#services" },
+    { name: "Corporativo", icon: Building2, href: "#services" },
+    { name: "Startups", icon: Rocket, href: "#services" },
+    { name: "Portafolios", icon: Briefcase, href: "#services" },
+    { name: "Branding", icon: Palette, href: "#services" },
+    { name: "Landing Pages", icon: Globe, href: "#services" },
   ];
 
   return (
@@ -27,41 +30,71 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-          isScrolled ? "glass rounded-full px-6 py-3" : "px-6 py-4"
-        }`}
+        className="fixed top-4 left-4 right-4 z-50 flex items-center justify-between"
       >
-        <div className="flex items-center gap-8">
+        {/* Left Navigation Group */}
+        <div className={`flex items-center gap-1 glass rounded-full px-2 py-2 transition-all duration-300 ${
+          isScrolled ? "bg-secondary/80" : ""
+        }`}>
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="font-display font-bold text-primary-foreground text-sm">A</span>
-            </div>
-            <span className="font-display font-semibold text-foreground text-lg hidden sm:block">
-              ATOM STUDIOS
-            </span>
+          <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-primary">
+            <span className="font-display font-bold text-primary-foreground text-lg">A</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+          <div className="hidden md:flex items-center">
+            <a
+              href="#portfolio"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium px-5 py-2"
+            >
+              PORTAFOLIO
+            </a>
 
-          {/* CTA Button */}
-          <a
-            href="#contact"
-            className="hidden md:block glass px-5 py-2.5 rounded-full text-sm font-medium text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            Empezar Proyecto
-          </a>
+            {/* Services Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                onBlur={() => setTimeout(() => setIsServicesOpen(false), 200)}
+                className={`flex items-center gap-1 text-sm font-medium px-5 py-2 rounded-full transition-colors duration-200 ${
+                  isServicesOpen ? "bg-secondary/80 text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                SERVICIOS
+                <ChevronDown size={16} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {isServicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 glass rounded-2xl p-6 min-w-[400px] z-50 bg-secondary/95 backdrop-blur-xl"
+                  >
+                    <div className="grid grid-cols-2 gap-4">
+                      {services.map((service) => (
+                        <a
+                          key={service.name}
+                          href={service.href}
+                          className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors duration-200 py-2"
+                        >
+                          <service.icon size={28} strokeWidth={1.5} />
+                          <span className="text-base font-medium">{service.name}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <a
+              href="#about"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium px-5 py-2"
+            >
+              NOSOTROS
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -71,6 +104,14 @@ const Navigation = () => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+
+        {/* Right CTA Button */}
+        <a
+          href="#contact"
+          className="hidden md:block px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wide text-background bg-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+        >
+          Empezar Proyecto
+        </a>
       </motion.nav>
 
       {/* Mobile Menu */}
@@ -80,23 +121,34 @@ const Navigation = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-4 top-20 z-40 glass rounded-2xl p-6 md:hidden"
+            className="fixed inset-x-4 top-20 z-40 glass rounded-2xl p-6 md:hidden bg-secondary/95 backdrop-blur-xl"
           >
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground text-lg font-medium py-2"
-                >
-                  {item.name}
-                </a>
-              ))}
+              <a
+                href="#portfolio"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-foreground text-lg font-medium py-2"
+              >
+                Portafolio
+              </a>
+              <a
+                href="#services"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-foreground text-lg font-medium py-2"
+              >
+                Servicios
+              </a>
+              <a
+                href="#about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-foreground text-lg font-medium py-2"
+              >
+                Nosotros
+              </a>
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-primary text-primary-foreground px-5 py-3 rounded-full text-center font-medium mt-2"
+                className="bg-foreground text-background px-5 py-3 rounded-full text-center font-medium mt-2"
               >
                 Empezar Proyecto
               </a>

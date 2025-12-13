@@ -20,12 +20,26 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
         </div>
 
+        {/* Bottom Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="absolute bottom-8 left-6 z-10"
+        >
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground/90 leading-tight tracking-tight">
+            SITIOS QUE
+            <br />
+            TRANSFORMAN NEGOCIOS
+          </h2>
+        </motion.div>
+
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-10 right-10 z-10"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
