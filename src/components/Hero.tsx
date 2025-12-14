@@ -61,24 +61,6 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
         </div>
 
-        {/* Top Left Text */}
-        {videoStarted && (
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="absolute top-32 left-6 sm:left-12 z-10 max-w-md"
-          >
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-foreground/90 leading-tight tracking-tight">
-              Creamos
-              <br />
-              <span className="gradient-text font-medium">experiencias</span>
-              <br />
-              digitales
-            </h1>
-          </motion.div>
-        )}
-
         {/* Scroll Indicator */}
         {videoStarted && (
           <motion.div
@@ -97,6 +79,27 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         )}
+      </section>
+
+      {/* Text Section */}
+      <section className="relative py-32 bg-background">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+          >
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground leading-tight tracking-tight">
+              Creamos
+              <br />
+              <span className="gradient-text font-medium">experiencias</span>
+              <br />
+              digitales
+            </h2>
+          </motion.div>
+        </div>
       </section>
 
       {/* Second Section - Text Content */}
