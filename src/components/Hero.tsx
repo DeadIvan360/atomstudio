@@ -130,26 +130,27 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Second Section - Text Content */}
-      <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Smooth Parallax Frame Animation */}
-        <div className="absolute inset-0 z-0">
-          <motion.img 
-            src={frameUrls[currentFrame]} 
-            alt="" 
-            className="w-full h-full object-cover transition-transform duration-300 ease-out"
-            style={{ 
-              scale: useTransform(smoothProgress, [0, 1], [1.1, 1])
-            }}
+      {/* Second Section - Pinned Parallax */}
+      <section ref={sectionRef} className="relative h-[300vh]">
+        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-background">
+          {/* Smooth Parallax Frame Animation */}
+          <div className="absolute inset-0 z-0">
+            <motion.img 
+              src={frameUrls[currentFrame]} 
+              alt="" 
+              className="w-full h-full object-cover"
+              style={{ 
+                scale: useTransform(smoothProgress, [0, 1], [1.1, 1])
+              }}
+            />
+          </div>
+          
+          {/* Floating Glow Effect */}
+          <motion.div 
+            style={{ y: useTransform(smoothProgress, [0, 1], [50, -150]), scale }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
           />
         </div>
-        
-        {/* Floating Glow Effect */}
-        <motion.div 
-          style={{ y: useTransform(smoothProgress, [0, 1], [50, -150]), scale }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
-        />
-
       </section>
     </>
   );
