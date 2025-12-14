@@ -45,9 +45,9 @@ const Hero = () => {
   
   // Ultra smooth spring for scroll progress
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 50,
-    damping: 40,
-    restDelta: 0.0001
+    stiffness: 25,
+    damping: 50,
+    restDelta: 0.00001
   });
   
   // Update current frame based on smooth scroll progress
