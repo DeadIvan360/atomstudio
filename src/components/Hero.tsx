@@ -122,67 +122,6 @@ const Hero = () => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
         />
 
-        {/* Content with Parallax */}
-        <motion.div style={{ y, opacity }} className="relative z-10 container mx-auto px-6">
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className="inline-block px-4 py-2 rounded-full glass text-sm text-muted-foreground mb-8">
-                Estudio de Diseño Web
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8"
-            >
-              <span className="text-foreground">CREAMOS</span>
-              <br />
-              <span className="gradient-text animate-gradient">EXPERIENCIAS</span>
-              <br />
-              <span className="text-foreground">DIGITALES</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl text-muted-foreground max-w-xl mx-auto mb-12"
-            >
-              Transformamos ideas en sitios web impactantes. Diseño, desarrollo y 
-              estrategia digital para marcas que quieren destacar.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover:scale-105 transition-transform duration-300 glow"
-              >
-                Empezar Proyecto
-              </a>
-              <a
-                href="#portfolio"
-                className="inline-flex items-center justify-center px-8 py-4 glass text-foreground font-semibold rounded-full hover:bg-secondary transition-colors duration-300"
-              >
-                Ver Portafolio
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
       </section>
     </>
   );
