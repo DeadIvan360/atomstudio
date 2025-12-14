@@ -1,10 +1,20 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
   const [videoStarted, setVideoStarted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0.8]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
 
   const handleVideoPlay = () => {
     setVideoStarted(true);
@@ -66,15 +76,21 @@ const Hero = () => {
       </section>
 
       {/* Second Section - Text Content */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 z-0">
+      <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+        {/* Gradient Background with Parallax */}
+        <motion.div 
+          style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
+          className="absolute inset-0 z-0"
+        >
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-        </div>
+          <motion.div 
+            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]), scale }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" 
+          />
+        </motion.div>
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-6">
+        {/* Content with Parallax */}
+        <motion.div style={{ y, opacity }} className="relative z-10 container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -133,7 +149,7 @@ const Hero = () => {
               </a>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );
