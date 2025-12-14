@@ -41,7 +41,7 @@ const Footer = () => {
           {/* Social */}
           <div className="flex items-center gap-4">
             <a
-              href="https://www.instagram.com/atomstudios_10/"
+              href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=zwoje32"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
@@ -52,7 +52,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.facebook.com/profile.php?id=61584001101188"
+              href="https://www.facebook.com/share/1DJbryRGR7/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
