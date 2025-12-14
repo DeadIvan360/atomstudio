@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
 
 // Generate frame URLs from Supabase storage
@@ -25,14 +25,24 @@ const Hero = () => {
     offset: ["start end", "end start"]
   });
   
-  // Update current frame based on scroll progress
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const frameIndex = Math.min(
-      Math.floor(latest * TOTAL_FRAMES),
-      TOTAL_FRAMES - 1
-    );
-    setCurrentFrame(Math.max(0, frameIndex));
+  // Smooth spring for scroll progress
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
   });
+  
+  // Update current frame based on smooth scroll progress
+  useEffect(() => {
+    const unsubscribe = smoothProgress.on("change", (latest) => {
+      const frameIndex = Math.min(
+        Math.floor(latest * TOTAL_FRAMES),
+        TOTAL_FRAMES - 1
+      );
+      setCurrentFrame(Math.max(0, frameIndex));
+    });
+    return () => unsubscribe();
+  }, [smoothProgress]);
   
   const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0.8]);
@@ -109,17 +119,16 @@ const Hero = () => {
           <motion.img 
             src={frameUrls[currentFrame]} 
             alt="" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 ease-out"
             style={{ 
-              scale: useTransform(scrollYProgress, [0, 1], [1.1, 1])
+              scale: useTransform(smoothProgress, [0, 1], [1.1, 1])
             }}
-            transition={{ duration: 0.1, ease: "linear" }}
           />
         </div>
         
         {/* Floating Glow Effect */}
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [50, -150]), scale }}
+          style={{ y: useTransform(smoothProgress, [0, 1], [50, -150]), scale }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
         />
 
