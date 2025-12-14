@@ -10,7 +10,9 @@ const SUPABASE_BUCKET_URL = "https://vxukunqktsxcyjtarmou.supabase.co/storage/v1
 const Hero = () => {
   const [videoStarted, setVideoStarted] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const preloadedImages = useRef<HTMLImageElement[]>([]);
   
   // Generate all frame URLs
   const frameUrls = useMemo(() => {
@@ -19,6 +21,22 @@ const Hero = () => {
       return `${SUPABASE_BUCKET_URL}/frame_${frameNumber}_delay-0.05s.png`;
     });
   }, []);
+  
+  // Preload all images
+  useEffect(() => {
+    let loadedCount = 0;
+    preloadedImages.current = frameUrls.map((url, index) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === TOTAL_FRAMES) {
+          setImagesLoaded(true);
+        }
+      };
+      return img;
+    });
+  }, [frameUrls]);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
