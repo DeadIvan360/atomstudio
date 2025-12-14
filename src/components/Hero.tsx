@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useState, useRef } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import parallaxBg from "@/assets/parallax-bg.png";
 
 const Hero = () => {
   const [videoStarted, setVideoStarted] = useState(false);
@@ -77,17 +78,24 @@ const Hero = () => {
 
       {/* Second Section - Text Content */}
       <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Gradient Background with Parallax */}
+        {/* Parallax Background Image */}
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-          <motion.div 
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]), scale }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" 
+          <img 
+            src={parallaxBg} 
+            alt="" 
+            className="w-full h-full object-cover opacity-30"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
         </motion.div>
+        
+        {/* Floating Glow Effect */}
+        <motion.div 
+          style={{ y: useTransform(scrollYProgress, [0, 1], [50, -150]), scale }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
+        />
 
         {/* Content with Parallax */}
         <motion.div style={{ y, opacity }} className="relative z-10 container mx-auto px-6">
