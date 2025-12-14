@@ -108,12 +108,10 @@ const Hero = () => {
             alt="" 
             className="w-full h-full object-cover"
             style={{ 
-              opacity: 0.25,
               scale: useTransform(scrollYProgress, [0, 1], [1.1, 1])
             }}
             transition={{ duration: 0.1, ease: "linear" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
         </div>
         
         {/* Floating Glow Effect */}
