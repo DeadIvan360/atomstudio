@@ -61,19 +61,21 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
         </div>
 
-        {/* Bottom Text */}
+        {/* Top Left Text */}
         {videoStarted && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="absolute bottom-8 left-6 z-10"
+            className="absolute top-32 left-6 sm:left-12 z-10 max-w-md"
           >
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground/90 leading-tight tracking-tight">
-              SITIOS QUE
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-foreground/90 leading-tight tracking-tight">
+              Creamos
               <br />
-              TRANSFORMAN NEGOCIOS
-            </h2>
+              <span className="gradient-text font-medium">experiencias</span>
+              <br />
+              digitales
+            </h1>
           </motion.div>
         )}
 
@@ -99,18 +101,20 @@ const Hero = () => {
 
       {/* Second Section - Text Content */}
       <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Parallax Frame Animation */}
-        <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
-          className="absolute inset-0 z-0"
-        >
-          <img 
+        {/* Smooth Parallax Frame Animation */}
+        <div className="absolute inset-0 z-0">
+          <motion.img 
             src={frameUrls[currentFrame]} 
             alt="" 
-            className="w-full h-full object-cover opacity-40 transition-opacity duration-100"
+            className="w-full h-full object-cover"
+            style={{ 
+              opacity: 0.25,
+              scale: useTransform(scrollYProgress, [0, 1], [1.1, 1])
+            }}
+            transition={{ duration: 0.1, ease: "linear" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
-        </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        </div>
         
         {/* Floating Glow Effect */}
         <motion.div 
