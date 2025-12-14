@@ -1,16 +1,37 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
-import parallaxBg from "@/assets/parallax-bg.png";
+
+// Generate frame URLs from Supabase storage
+const TOTAL_FRAMES = 160;
+const SUPABASE_BUCKET_URL = "https://vxukunqktsxcyjtarmou.supabase.co/storage/v1/object/public/parallax%20atom";
 
 const Hero = () => {
   const [videoStarted, setVideoStarted] = useState(false);
+  const [currentFrame, setCurrentFrame] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  
+  // Generate all frame URLs
+  const frameUrls = useMemo(() => {
+    return Array.from({ length: TOTAL_FRAMES }, (_, i) => {
+      const frameNumber = i.toString().padStart(3, '0');
+      return `${SUPABASE_BUCKET_URL}/frame_${frameNumber}_delay-0.05s.png`;
+    });
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
+  });
+  
+  // Update current frame based on scroll progress
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const frameIndex = Math.min(
+      Math.floor(latest * TOTAL_FRAMES),
+      TOTAL_FRAMES - 1
+    );
+    setCurrentFrame(Math.max(0, frameIndex));
   });
   
   const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
@@ -78,17 +99,17 @@ const Hero = () => {
 
       {/* Second Section - Text Content */}
       <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Parallax Background Image */}
+        {/* Parallax Frame Animation */}
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
           className="absolute inset-0 z-0"
         >
           <img 
-            src={parallaxBg} 
+            src={frameUrls[currentFrame]} 
             alt="" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-40 transition-opacity duration-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </motion.div>
         
         {/* Floating Glow Effect */}
