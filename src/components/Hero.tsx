@@ -43,11 +43,11 @@ const Hero = () => {
     offset: ["start end", "end start"]
   });
   
-  // Smooth spring for scroll progress
+  // Ultra smooth spring for scroll progress
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
+    stiffness: 50,
+    damping: 40,
+    restDelta: 0.0001
   });
   
   // Update current frame based on smooth scroll progress
