@@ -30,7 +30,7 @@ const Contact = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="mailto:hola@atomstudios.com"
+              href="mailto:atomstudios10@gmail.com"
               className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover:scale-105 transition-transform duration-300 glow"
             >
               Iniciar Proyecto
@@ -38,10 +38,10 @@ const Contact = () => {
             </a>
             
             <a
-              href="mailto:hola@atomstudios.com"
+              href="mailto:atomstudios10@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              hola@atomstudios.com
+              atomstudios10@gmail.com
             </a>
           </div>
         </motion.div>
