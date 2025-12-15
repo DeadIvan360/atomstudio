@@ -108,7 +108,9 @@ const Navigation = () => {
 
         {/* Right CTA Button */}
         <a
-          href="#contact"
+          href="https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20empezar%20un%20proyecto%20web"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:block px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wide text-background bg-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           Empezar Proyecto
@@ -147,7 +149,9 @@ const Navigation = () => {
                 Nosotros
               </a>
               <a
-                href="#contact"
+                href="https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20empezar%20un%20proyecto%20web"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-foreground text-background px-5 py-3 rounded-full text-center font-medium mt-2"
               >

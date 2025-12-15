@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, Phone } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+
+const PHONE_NUMBER = "+34 612 345 678";
+const WHATSAPP_LINK = "https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20empezar%20un%20proyecto%20web";
 
 const Contact = () => {
   return (
@@ -30,17 +34,31 @@ const Contact = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="mailto:atomstudios10@gmail.com"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover:scale-105 transition-transform duration-300 glow"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-lg shadow-[#25D366]/30"
             >
-              Iniciar Proyecto
+              <SiWhatsapp className="w-5 h-5" />
+              Contactar por WhatsApp
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
+            <a
+              href={`tel:${PHONE_NUMBER.replace(/\s/g, '')}`}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              {PHONE_NUMBER}
             </a>
             
             <a
               href="mailto:atomstudios10@gmail.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
+              <Mail className="w-4 h-4" />
               atomstudios10@gmail.com
             </a>
           </div>
