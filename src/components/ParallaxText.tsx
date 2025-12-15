@@ -14,20 +14,16 @@ const ParallaxText = () => {
     offset: ["start start", "end end"]
   });
 
-  // Horizontal movement for images - from sides to center and back
-  const xLeft1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ["-100%", "0%", "0%", "100%"]);
-  const xRight1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], ["100%", "0%", "0%", "-100%"]);
-  const xLeft2 = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], ["-120%", "0%", "0%", "120%"]);
-  const xRight2 = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], ["120%", "0%", "0%", "-120%"]);
-  const xCenter = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], ["0%", "0%", "0%", "0%"]);
+  // Horizontal movement for images - more dramatic movement
+  const xLeft1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-150%", "0%", "150%"]);
+  const xRight1 = useTransform(scrollYProgress, [0, 0.5, 1], ["150%", "0%", "-150%"]);
+  const xLeft2 = useTransform(scrollYProgress, [0, 0.5, 1], ["-180%", "0%", "180%"]);
+  const xRight2 = useTransform(scrollYProgress, [0, 0.5, 1], ["180%", "0%", "-180%"]);
+  const xCenter = useTransform(scrollYProgress, [0, 0.5, 1], ["-50%", "0%", "50%"]);
   
-  // Opacity and scale - stay visible
-  const opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
-  
-  // Text horizontal movement
-  const textX1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-10%", "0%", "10%"]);
-  const textX2 = useTransform(scrollYProgress, [0, 0.5, 1], ["10%", "0%", "-10%"]);
+  // Text horizontal movement - more movement
+  const textX1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-20%", "0%", "20%"]);
+  const textX2 = useTransform(scrollYProgress, [0, 0.5, 1], ["20%", "0%", "-20%"]);
 
   const floatingImages = [
     {
@@ -73,7 +69,7 @@ const ParallaxText = () => {
         {floatingImages.map((img, index) => (
           <motion.div
             key={index}
-            style={{ x: img.x, opacity, scale }}
+            style={{ x: img.x }}
             className={img.className}
           >
             <img 
@@ -85,23 +81,20 @@ const ParallaxText = () => {
         ))}
 
         {/* Center Text */}
-        <motion.div 
-          style={{ opacity, scale }}
-          className="relative z-40 text-center px-4"
-        >
-          <motion.h2 
+        <div className="relative z-40 text-center px-4 max-w-6xl">
+          <motion.p 
             style={{ x: textX1 }}
-            className="text-[12vw] md:text-[10vw] font-bold text-foreground tracking-tighter leading-none"
+            className="text-[6vw] md:text-[4vw] font-bold text-foreground tracking-tight leading-tight"
           >
-            DISEÑA
-          </motion.h2>
-          <motion.h2 
+            No es solo una página web,
+          </motion.p>
+          <motion.p 
             style={{ x: textX2 }}
-            className="text-[12vw] md:text-[10vw] font-bold text-primary tracking-tighter leading-none"
+            className="text-[6vw] md:text-[4vw] font-bold text-primary tracking-tight leading-tight"
           >
-            SMARTER
-          </motion.h2>
-        </motion.div>
+            es tu mejor vendedor.
+          </motion.p>
+        </div>
 
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none z-50" />
