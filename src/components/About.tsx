@@ -10,11 +10,11 @@ const About = () => {
     offset: ["start start", "end end"]
   });
 
-  // Scale transforms for parallax effect - images grow from small to large
-  const scale1 = useTransform(scrollYProgress, [0, 0.5], [0.3, 1]);
-  const scale2 = useTransform(scrollYProgress, [0.1, 0.6], [0.3, 1]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const opacity2 = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+  // Scale transforms for parallax effect - images start visible but small, then grow
+  const scale1 = useTransform(scrollYProgress, [0, 0.5], [0.4, 1]);
+  const scale2 = useTransform(scrollYProgress, [0.1, 0.6], [0.4, 1]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.15], [0.6, 1]);
+  const opacity2 = useTransform(scrollYProgress, [0.1, 0.25], [0.6, 1]);
   
   // Text appears after images are grown
   const textOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
