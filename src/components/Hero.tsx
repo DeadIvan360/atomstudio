@@ -109,29 +109,8 @@ const Hero = () => {
         )}
       </section>
 
-      {/* Text Section */}
-      <section className="relative py-32 bg-background">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground leading-tight tracking-tight">
-              Creamos
-              <br />
-              <span className="gradient-text font-medium">experiencias</span>
-              <br />
-              digitales
-            </h2>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Second Section - Pinned Parallax */}
-      <section ref={sectionRef} className="relative h-[300vh]">
+      <section ref={sectionRef} className="relative h-[500vh]">
         <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-background">
           {/* Smooth Parallax Frame Animation */}
           <div className="absolute inset-0 z-0">
@@ -150,6 +129,20 @@ const Hero = () => {
             style={{ y: useTransform(smoothProgress, [0, 1], [50, -150]), scale }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl z-0" 
           />
+          
+          {/* Text Content */}
+          <motion.div
+            style={{ opacity, y }}
+            className="relative z-10 container mx-auto px-6"
+          >
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl font-light text-foreground leading-tight tracking-tight">
+              Creamos
+              <br />
+              <span className="gradient-text font-medium">experiencias</span>
+              <br />
+              digitales
+            </h2>
+          </motion.div>
         </div>
       </section>
     </>
