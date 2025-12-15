@@ -5,21 +5,28 @@ import parallaxInterface from "@/assets/parallax-interface.png";
 import parallaxPhone from "@/assets/parallax-phone.png";
 import parallaxMonitor from "@/assets/parallax-monitor.png";
 import parallaxShapes from "@/assets/parallax-shapes.png";
+import parallaxWeb1 from "@/assets/parallax-web1.png";
+import parallaxWeb2 from "@/assets/parallax-web2.png";
+import parallaxWeb3 from "@/assets/parallax-web3.png";
+import parallaxWeb4 from "@/assets/parallax-web4.png";
+import parallaxWeb5 from "@/assets/parallax-web5.png";
 
 const ParallaxText = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start end", "end start"]
   });
 
   // Horizontal movement for images - more dramatic movement
-  const xLeft1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-150%", "0%", "150%"]);
-  const xRight1 = useTransform(scrollYProgress, [0, 0.5, 1], ["150%", "0%", "-150%"]);
-  const xLeft2 = useTransform(scrollYProgress, [0, 0.5, 1], ["-180%", "0%", "180%"]);
-  const xRight2 = useTransform(scrollYProgress, [0, 0.5, 1], ["180%", "0%", "-180%"]);
-  const xCenter = useTransform(scrollYProgress, [0, 0.5, 1], ["-50%", "0%", "50%"]);
+  const xLeft1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-120%", "0%", "120%"]);
+  const xRight1 = useTransform(scrollYProgress, [0, 0.5, 1], ["120%", "0%", "-120%"]);
+  const xLeft2 = useTransform(scrollYProgress, [0, 0.5, 1], ["-150%", "0%", "150%"]);
+  const xRight2 = useTransform(scrollYProgress, [0, 0.5, 1], ["150%", "0%", "-150%"]);
+  const xCenter = useTransform(scrollYProgress, [0, 0.5, 1], ["-80%", "0%", "80%"]);
+  const xLeft3 = useTransform(scrollYProgress, [0, 0.5, 1], ["-180%", "0%", "180%"]);
+  const xRight3 = useTransform(scrollYProgress, [0, 0.5, 1], ["180%", "0%", "-180%"]);
   
   // Text horizontal movement - more movement
   const textX1 = useTransform(scrollYProgress, [0, 0.5, 1], ["-20%", "0%", "20%"]);
@@ -29,32 +36,63 @@ const ParallaxText = () => {
     {
       src: parallaxLaptop,
       x: xLeft1,
-      className: "absolute top-[15%] left-[5%] w-[280px] md:w-[350px] z-10",
+      className: "absolute top-[8%] left-[3%] w-[220px] md:w-[280px] z-10",
       alt: "Laptop con diseño web"
     },
     {
       src: parallaxInterface,
       x: xRight1,
-      className: "absolute top-[10%] right-[8%] w-[200px] md:w-[280px] z-20",
+      className: "absolute top-[5%] right-[5%] w-[180px] md:w-[240px] z-20",
       alt: "Interfaz digital"
     },
     {
       src: parallaxPhone,
       x: xLeft2,
-      className: "absolute bottom-[20%] left-[15%] w-[120px] md:w-[180px] z-30",
+      className: "absolute bottom-[25%] left-[10%] w-[100px] md:w-[150px] z-30",
       alt: "Móvil con app"
     },
     {
       src: parallaxMonitor,
       x: xRight2,
-      className: "absolute bottom-[15%] right-[5%] w-[250px] md:w-[320px] z-10",
+      className: "absolute bottom-[20%] right-[3%] w-[200px] md:w-[280px] z-10",
       alt: "Monitor con diseño"
     },
     {
       src: parallaxShapes,
       x: xCenter,
-      className: "absolute top-[45%] right-[30%] w-[150px] md:w-[200px] z-5 opacity-80",
+      className: "absolute top-[40%] right-[35%] w-[120px] md:w-[160px] z-5 opacity-70",
       alt: "Formas abstractas"
+    },
+    // New website images
+    {
+      src: parallaxWeb1,
+      x: xLeft3,
+      className: "absolute top-[20%] left-[20%] w-[200px] md:w-[260px] z-15",
+      alt: "E-commerce website"
+    },
+    {
+      src: parallaxWeb2,
+      x: xRight3,
+      className: "absolute top-[30%] right-[15%] w-[120px] md:w-[160px] z-25",
+      alt: "Food delivery app"
+    },
+    {
+      src: parallaxWeb3,
+      x: xLeft1,
+      className: "absolute bottom-[35%] left-[25%] w-[180px] md:w-[240px] z-12",
+      alt: "Real estate website"
+    },
+    {
+      src: parallaxWeb4,
+      x: xRight1,
+      className: "absolute bottom-[10%] right-[20%] w-[200px] md:w-[260px] z-18",
+      alt: "Gym website"
+    },
+    {
+      src: parallaxWeb5,
+      x: xCenter,
+      className: "absolute top-[60%] left-[5%] w-[180px] md:w-[240px] z-8",
+      alt: "Fashion boutique website"
     }
   ];
 
