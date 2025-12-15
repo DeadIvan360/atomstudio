@@ -4,111 +4,119 @@ import teamMember from "@/assets/team-member.png";
 
 const About = () => {
   return (
-    <section id="about" className="py-32 relative">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+    <section id="about" className="py-32 relative overflow-hidden">
+      {/* Background Text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span className="font-display text-[15vw] font-bold text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap">
+          ATOM STUDIOS
+        </span>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
+        >
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            Conoce al <span className="gradient-text">equipo</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Las mentes creativas detrás de cada proyecto
+          </p>
+        </motion.div>
+
+        {/* Team Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Creator 1 - Ivan */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="flex flex-col items-center text-center"
           >
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-              Creatividad sin
-              <br />
-              <span className="gradient-text">límites</span>
-            </h2>
-            
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              En Atom Studios, creemos que cada marca merece una presencia digital excepcional. 
-              Combinamos diseño estratégico con desarrollo de vanguardia para crear experiencias 
-              que no solo se ven increíbles, sino que también generan resultados.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mb-12">
-              <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
-                React & Next.js
-              </div>
-              <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
-                Figma & Design
-              </div>
-              <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
-                Webflow
-              </div>
-              <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
-                WordPress
-              </div>
-            </div>
-
-            {/* Founder Photo with Description */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-6"
-            >
-              <div className="w-24 h-24 rounded-full overflow-hidden glass border-2 border-primary/30 flex-shrink-0">
+            {/* Photo */}
+            <div className="relative mb-8 group">
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden">
                 <img 
                   src={ivanFounder}
                   alt="Iván - Fundador de Atom Studios"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
-              <div>
-                <p className="text-foreground font-medium mb-1">Iván</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  "Soy el fundador de Atom Studios. Mi pasión es transformar ideas en experiencias digitales que conectan marcas con personas."
-                </p>
-              </div>
-            </motion.div>
+            </div>
+            
+            {/* Description */}
+            <div className="max-w-sm">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-4">IVÁN</h3>
+              <p className="text-muted-foreground leading-relaxed uppercase tracking-wide text-sm">
+                Hola, soy Iván - Desarrollador Frontend creativo.
+                <br />
+                Mi enfoque está en construir experiencias elegantes, animadas e inmersivas
+                que transforman sitios web simples en algo extraordinario.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Right Visual - Team Member Photo */}
+          {/* Creator 2 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="relative max-w-md mx-auto">
-              {/* Decorative Elements */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent animate-pulse-glow" />
-              
-              <div className="relative rounded-2xl glass overflow-hidden">
+            {/* Photo */}
+            <div className="relative mb-8 group">
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden">
                 <img 
                   src={teamMember}
-                  alt="Equipo Atom Studios"
-                  className="w-full h-auto object-cover"
+                  alt="Co-fundador de Atom Studios"
+                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
-
-              {/* Floating Card */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-6 -left-6 p-6 rounded-2xl glass"
-              >
-                <p className="text-3xl font-display font-bold gradient-text">5+</p>
-                <p className="text-sm text-muted-foreground">Años creando</p>
-              </motion.div>
-
-              {/* Floating Card 2 */}
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="absolute -top-4 -right-4 p-4 rounded-xl glass"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm text-foreground">Disponibles ahora</span>
-                </div>
-              </motion.div>
+            </div>
+            
+            {/* Description */}
+            <div className="max-w-sm">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-4">CREADOR</h3>
+              <p className="text-muted-foreground leading-relaxed uppercase tracking-wide text-sm">
+                Soy el co-fundador de Atom Studios.
+                <br />
+                Especializado en diseño UI/UX y estrategia digital,
+                creo experiencias visuales que conectan marcas con su audiencia.
+              </p>
             </div>
           </motion.div>
         </div>
+
+        {/* Tech Tags */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-wrap justify-center gap-4 mt-20"
+        >
+          <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
+            React & Next.js
+          </div>
+          <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
+            Figma & Design
+          </div>
+          <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
+            Webflow
+          </div>
+          <div className="px-5 py-3 rounded-full glass text-sm text-foreground">
+            WordPress
+          </div>
+        </motion.div>
       </div>
     </section>
   );
