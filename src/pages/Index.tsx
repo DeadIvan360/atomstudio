@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import ParallaxText from "@/components/ParallaxText";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
 import Portfolio from "@/components/Portfolio";
@@ -24,6 +25,7 @@ const Index = () => {
       <main className="min-h-screen bg-background">
         <Navigation />
         <Hero />
+        <ParallaxText />
         <Services />
         <Stats />
         <Portfolio />
