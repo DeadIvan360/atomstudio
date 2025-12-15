@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ShoppingBag, Building2, Briefcase, Rocket, Palette, Globe } from "lucide-react";
+import ProjectQuestionnaireDialog from "./ProjectQuestionnaireDialog";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -107,14 +109,12 @@ const Navigation = () => {
         </div>
 
         {/* Right CTA Button */}
-        <a
-          href="https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20empezar%20un%20proyecto%20web"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => setIsQuestionnaireOpen(true)}
           className="hidden md:block px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wide text-background bg-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           Empezar Proyecto
-        </a>
+        </button>
       </motion.nav>
 
       {/* Mobile Menu */}
@@ -148,19 +148,24 @@ const Navigation = () => {
               >
                 Nosotros
               </a>
-              <a
-                href="https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20empezar%20un%20proyecto%20web"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsQuestionnaireOpen(true);
+                }}
                 className="bg-foreground text-background px-5 py-3 rounded-full text-center font-medium mt-2"
               >
                 Empezar Proyecto
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ProjectQuestionnaireDialog 
+        isOpen={isQuestionnaireOpen} 
+        onClose={() => setIsQuestionnaireOpen(false)} 
+      />
     </>
   );
 };
