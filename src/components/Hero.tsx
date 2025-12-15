@@ -27,6 +27,22 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
       </div>
 
+      {/* Bottom Left Text */}
+      {videoStarted && (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="absolute bottom-10 left-10 z-10"
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-foreground leading-tight tracking-tight">
+            QUE EL MUNDO
+            <br />
+            CONOZCA TU NEGOCIO
+          </h1>
+        </motion.div>
+      )}
+
       {/* Scroll Indicator */}
       {videoStarted && (
         <motion.div
