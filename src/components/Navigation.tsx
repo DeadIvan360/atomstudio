@@ -19,12 +19,12 @@ const Navigation = () => {
   }, []);
 
   const services = [
-    { name: "E-Commerce", icon: ShoppingBag, href: "#services" },
-    { name: "Corporativo", icon: Building2, href: "#services" },
-    { name: "Startups", icon: Rocket, href: "#services" },
-    { name: "Portafolios", icon: Briefcase, href: "#services" },
-    { name: "Branding", icon: Palette, href: "#services" },
-    { name: "Landing Pages", icon: Globe, href: "#services" },
+    { name: "E-Commerce", icon: ShoppingBag, href: "#servicios" },
+    { name: "Corporativo", icon: Building2, href: "#servicios" },
+    { name: "Startups", icon: Rocket, href: "#servicios" },
+    { name: "Portafolios", icon: Briefcase, href: "#servicios" },
+    { name: "Branding", icon: Palette, href: "#servicios" },
+    { name: "Landing Pages", icon: Globe, href: "#servicios" },
   ];
 
   if (!isVisible) return null;
@@ -47,7 +47,7 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
             <a
-              href="#portfolio"
+              href="#portafolio"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium px-5 py-2"
             >
               PORTAFOLIO
@@ -92,7 +92,7 @@ const Navigation = () => {
             </div>
 
             <a
-              href="#about"
+              href="#nosotros"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium px-5 py-2"
             >
               NOSOTROS
@@ -128,21 +128,21 @@ const Navigation = () => {
           >
             <div className="flex flex-col gap-4">
               <a
-                href="#portfolio"
+                href="#portafolio"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-foreground text-lg font-medium py-2"
               >
                 Portafolio
               </a>
               <a
-                href="#services"
+                href="#servicios"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-foreground text-lg font-medium py-2"
               >
                 Servicios
               </a>
               <a
-                href="#about"
+                href="#nosotros"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-foreground text-lg font-medium py-2"
               >

@@ -36,7 +36,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-32 relative">
+    <section id="servicios" className="py-32 relative" aria-labelledby="servicios-title">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -46,13 +46,13 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-20"
         >
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            Servicios que
+          <h2 id="servicios-title" className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            Servicios de
             <br />
-            <span className="gradient-text">impulsan tu marca</span>
+            <span className="gradient-text">Diseño y Desarrollo Web</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Soluciones digitales completas para llevar tu presencia online al siguiente nivel.
+            Soluciones digitales completas para empresas que buscan destacar online y convertir visitantes en clientes.
           </p>
         </motion.div>
 

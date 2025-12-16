@@ -30,7 +30,7 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="py-32 relative">
+    <section id="portafolio" className="py-32 relative" aria-labelledby="portafolio-title">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -41,14 +41,14 @@ const Portfolio = () => {
           className="flex flex-col md:flex-row md:items-end md:justify-between mb-16"
         >
           <div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-              Nuestro
+            <h2 id="portafolio-title" className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+              Proyectos de
               <br />
-              <span className="gradient-text">Portafolio</span>
+              <span className="gradient-text">Diseño Web</span>
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md mt-4 md:mt-0">
-            Proyectos que hablan por sí solos. Cada uno diseñado con pasión y ejecutado con precisión.
+            Sitios web profesionales que generan resultados. Cada proyecto diseñado para convertir visitantes en clientes.
           </p>
         </motion.div>
 
@@ -66,7 +66,8 @@ const Portfolio = () => {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`Diseño web profesional - Proyecto ${project.title} - ${project.category}`}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
