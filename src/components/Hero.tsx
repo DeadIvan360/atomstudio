@@ -27,7 +27,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
       </div>
 
-      {/* Bottom Left Text */}
+      {/* Bottom Left Text - H1 optimizado para SEO */}
       {videoStarted && (
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -36,9 +36,9 @@ const Hero = () => {
           className="absolute bottom-10 left-10 z-10"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-foreground leading-tight tracking-tight">
-            QUE EL MUNDO
+            DISEÑO WEB PROFESIONAL
             <br />
-            CONOZCA TU NEGOCIO
+            <span className="text-primary">PARA TU NEGOCIO</span>
           </h1>
         </motion.div>
       )}

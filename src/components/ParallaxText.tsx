@@ -37,62 +37,61 @@ const ParallaxText = () => {
       src: parallaxLaptop,
       x: xLeft1,
       className: "absolute top-[8%] left-[3%] w-[220px] md:w-[280px] z-10",
-      alt: "Laptop con diseño web"
+      alt: "Diseño web profesional en laptop - desarrollo de páginas web responsivas"
     },
     {
       src: parallaxInterface,
       x: xRight1,
       className: "absolute top-[5%] right-[5%] w-[180px] md:w-[240px] z-20",
-      alt: "Interfaz digital"
+      alt: "Interfaz de usuario UI/UX - diseño web moderno para empresas"
     },
     {
       src: parallaxPhone,
       x: xLeft2,
       className: "absolute bottom-[25%] left-[10%] w-[100px] md:w-[150px] z-30",
-      alt: "Móvil con app"
+      alt: "Diseño web móvil - páginas web optimizadas para smartphones"
     },
     {
       src: parallaxMonitor,
       x: xRight2,
       className: "absolute bottom-[20%] right-[3%] w-[200px] md:w-[280px] z-10",
-      alt: "Monitor con diseño"
+      alt: "Sitio web profesional en monitor - desarrollo web de alta calidad"
     },
     {
       src: parallaxShapes,
       x: xCenter,
       className: "absolute top-[40%] right-[35%] w-[120px] md:w-[160px] z-5 opacity-70",
-      alt: "Formas abstractas"
+      alt: "Elementos de diseño web creativos"
     },
-    // New website images
     {
       src: parallaxWeb1,
       x: xLeft3,
       className: "absolute top-[20%] left-[20%] w-[200px] md:w-[260px] z-15",
-      alt: "E-commerce website"
+      alt: "Tienda online profesional - diseño de e-commerce para negocios"
     },
     {
       src: parallaxWeb2,
       x: xRight3,
       className: "absolute top-[30%] right-[15%] w-[120px] md:w-[160px] z-25",
-      alt: "Food delivery app"
+      alt: "Aplicación web para delivery - desarrollo de apps para restaurantes"
     },
     {
       src: parallaxWeb3,
       x: xLeft1,
       className: "absolute bottom-[35%] left-[25%] w-[180px] md:w-[240px] z-12",
-      alt: "Real estate website"
+      alt: "Página web inmobiliaria - diseño web para sector inmobiliario"
     },
     {
       src: parallaxWeb4,
       x: xRight1,
       className: "absolute bottom-[10%] right-[20%] w-[200px] md:w-[260px] z-18",
-      alt: "Gym website"
+      alt: "Sitio web para gimnasio - diseño web para sector fitness"
     },
     {
       src: parallaxWeb5,
       x: xCenter,
       className: "absolute top-[60%] left-[5%] w-[180px] md:w-[240px] z-8",
-      alt: "Fashion boutique website"
+      alt: "Tienda de moda online - diseño web para boutiques y tiendas"
     }
   ];
 

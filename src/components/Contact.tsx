@@ -7,7 +7,7 @@ const WHATSAPP_LINK = "https://wa.me/34612345678?text=Hola%2C%20me%20interesa%20
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-32 relative">
+    <section id="contacto" className="py-32 relative" aria-labelledby="contacto-title">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -17,19 +17,19 @@ const Contact = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-muted-foreground mb-8">
-            <Mail className="w-4 h-4" />
-            <span>Empecemos algo increíble</span>
+            <Mail className="w-4 h-4" aria-hidden="true" />
+            <span>Cotización gratis</span>
           </div>
 
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
-            ¿Listo para
+          <h2 id="contacto-title" className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+            Solicita tu
             <br />
-            <span className="gradient-text">transformar tu marca?</span>
+            <span className="gradient-text">Cotización de Diseño Web</span>
           </h2>
 
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Cuéntanos sobre tu proyecto y descubre cómo podemos ayudarte a crear 
-            una presencia digital que destaque.
+            Cuéntanos sobre tu proyecto y recibe una cotización personalizada. 
+            Diseño web profesional para empresas que buscan resultados.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

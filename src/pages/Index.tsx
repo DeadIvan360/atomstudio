@@ -13,12 +13,12 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Atom Studios | Diseño y Desarrollo Web Profesional</title>
+        <title>Diseño Web Profesional | Atom Studios - Agencia Digital</title>
         <meta
           name="description"
-          content="Creamos experiencias digitales impactantes. Diseño web, desarrollo y estrategia digital para marcas que quieren destacar."
+          content="Diseño y desarrollo web profesional para empresas. Landing pages, tiendas online y sitios web que convierten visitantes en clientes. ¡Cotiza gratis!"
         />
-        <meta name="keywords" content="diseño web, desarrollo web, páginas web, UI/UX, agencia digital" />
+        <meta name="keywords" content="diseño web profesional, agencia diseño web, desarrollo web, páginas web para empresas, landing pages, tiendas online, UI/UX" />
         <link rel="canonical" href="https://atomstudios.com" />
       </Helmet>
 

@@ -21,10 +21,10 @@ const About = () => {
   const textY = useTransform(scrollYProgress, [0.5, 0.7], [30, 0]);
 
   return (
-    <section id="about" ref={sectionRef} className="relative h-[300vh]">
+    <section id="nosotros" ref={sectionRef} className="relative h-[300vh]" aria-labelledby="nosotros-title">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         {/* Background Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden="true">
           <motion.span 
             style={{ opacity: useTransform(scrollYProgress, [0, 0.3], [0, 0.03]) }}
             className="font-display text-[15vw] font-bold text-foreground uppercase tracking-tighter whitespace-nowrap"
@@ -39,11 +39,11 @@ const About = () => {
             style={{ opacity: textOpacity, y: textY }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Conoce al <span className="gradient-text">equipo</span>
+            <h2 id="nosotros-title" className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              Agencia de <span className="gradient-text">Diseño Web</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Las mentes creativas detrás de cada proyecto
+              Expertos en diseño y desarrollo web profesional para empresas
             </p>
           </motion.div>
 
@@ -60,7 +60,8 @@ const About = () => {
                 <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden">
                   <img 
                     src={ivanFounder}
-                    alt="Iván - Fundador de Atom Studios"
+                    alt="Iván - Desarrollador web y fundador de Atom Studios, agencia de diseño web profesional"
+                    loading="lazy"
                     className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
@@ -92,7 +93,8 @@ const About = () => {
                 <div className="relative w-64 h-80 sm:w-80 sm:h-96 overflow-hidden">
                   <img 
                     src={teamMember}
-                    alt="Co-fundador de Atom Studios"
+                    alt="Co-fundador de Atom Studios - Diseñador UI/UX especializado en páginas web para empresas"
+                    loading="lazy"
                     className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
